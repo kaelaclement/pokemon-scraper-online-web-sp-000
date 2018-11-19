@@ -13,6 +13,12 @@ class Pokemon
   end
 
   def self.find(id, db)
-    db.execute("SELECT * FROM pokemon WHERE pokemon.id = (?);", id)
+    pokemon_info = db.execute("SELECT * FROM pokemon WHERE pokemon.id = (?);", id)
+    self.new.tap do |pokemon|
+      pokemon.id = pokemon_info[0]
+      pokemon.name = pokemon_info[1]
+      pokemon.type = pokemon_info[2]
+      pokemon.db = db
+    end
   end
 end
