@@ -7,4 +7,8 @@ class Pokemon
     @type = type
     @db = db
   end
+
+  def save
+    @db.execute("INSERT INTO pokemon (name, type) VALUES (?, ?)", @name, @type)
+  end
 end
