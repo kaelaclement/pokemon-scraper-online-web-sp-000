@@ -5,7 +5,7 @@ class Pokemon
     @id = id
     @name = name
     @type = type
-    @@db = SQLite3::Database.new('db')
+    @@db = SQLite3::Database.new('#{db}')
   end
 
   def self.save(id, name, type)
